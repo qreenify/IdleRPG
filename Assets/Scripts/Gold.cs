@@ -5,6 +5,14 @@ public class Gold : MonoBehaviour {
 	public int goldAmount;
 	public Text goldAmountText;
 
+	void Start() {
+		this.goldAmount = PlayerPrefs.GetInt("Gold", 1);
+	}
+
+	void OnDestroy() {
+		PlayerPrefs.SetInt("Gold", this.goldAmount);
+	}
+	
 	void Update() {
 		this.goldAmountText.text = this.goldAmount.ToString("0 Gold");
 		if (Input.GetMouseButtonDown(0)) {
