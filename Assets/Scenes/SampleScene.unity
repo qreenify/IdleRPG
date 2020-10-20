@@ -521,6 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldAmount: 0
+  goldAmountPerClick: 5
   goldAmountText: {fileID: 119760454}
 --- !u!4 &1049995127
 Transform:
