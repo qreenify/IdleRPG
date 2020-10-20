@@ -5,21 +5,20 @@ public class Gold : MonoBehaviour {
 	public int goldAmountPerClick = 5;
 	public Text goldAmountText;
 
-	int _goldAmount;
 	public int GoldAmount {
-		get => this._goldAmount;
+		get => PlayerPrefs.GetInt("Gold", 1);
 		set {
-			this._goldAmount = value;
-			this.goldAmountText.text = value.ToString("0 Gold");
-		} 
-	}
-	
-	void Start() {
-		this.GoldAmount = PlayerPrefs.GetInt("Gold", 1);
+			PlayerPrefs.SetInt("Gold", value);
+			UpdateGoldAmountLabel();
+		}
 	}
 
-	void OnDestroy() {
-		PlayerPrefs.SetInt("Gold", this.GoldAmount);
+	void UpdateGoldAmountLabel() {
+		this.goldAmountText.text = this.GoldAmount.ToString("0 Gold");
+	}
+
+	void Start() {
+		UpdateGoldAmountLabel();
 	}
 	
 	void Update() {
