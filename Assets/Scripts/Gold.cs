@@ -20,12 +20,6 @@ public class Gold : MonoBehaviour {
 	void Start() {
 		UpdateGoldAmountLabel();
 	}
-	
-	void Update() {
-		if (Input.GetMouseButtonDown(0)) {
-			ProduceGold();
-		}
-	}
 
 	public void ProduceGold() {
 		this.GoldAmount += this.goldAmountPerClick; // this.goldAmount = this.goldAmount + goldAmountPerClick;

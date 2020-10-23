@@ -1,28 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class GoldProductionUnitScript : MonoBehaviour {
-	public GoldProductionUnit goldProductionUnit;
+public class GoldProducer : MonoBehaviour {
+	public GoldProductionData GoldProductionData;
 	public Text goldAmountText;
 	public Text purchaseButtonLabel;
 	float elapsedTime;
 
-	public void SetUp(GoldProductionUnit goldProductionUnit) {
-		this.goldProductionUnit = goldProductionUnit;
-		this.gameObject.name = goldProductionUnit.name;
-		this.purchaseButtonLabel.text = $"Purchase {goldProductionUnit.name}";
+	public void SetUp(GoldProductionData goldProductionData) {
+		this.GoldProductionData = goldProductionData;
+		this.gameObject.name = goldProductionData.name;
+		this.purchaseButtonLabel.text = $"Purchase {goldProductionData.name}";
 	}
 	
 	public int GoldPressAmount {
-		get => PlayerPrefs.GetInt(this.goldProductionUnit.name, 0);
+		get => PlayerPrefs.GetInt(this.GoldProductionData.name, 0);
 		set {
-			PlayerPrefs.SetInt(this.goldProductionUnit.name, value);
+			PlayerPrefs.SetInt(this.GoldProductionData.name, value);
 			UpdateGoldPressAmountLabel();
 		}
 	}
 
 	void UpdateGoldPressAmountLabel() {
-		this.goldAmountText.text = this.GoldPressAmount.ToString($"0 {this.goldProductionUnit.name}");
+		this.goldAmountText.text = this.GoldPressAmount.ToString($"0 {this.GoldProductionData.name}");
 	}
 
 	void Start() {
@@ -31,9 +31,9 @@ public class GoldProductionUnitScript : MonoBehaviour {
 	
 	void Update() {
 		this.elapsedTime += Time.deltaTime;
-		if (this.elapsedTime >= this.goldProductionUnit.productionTime) {
+		if (this.elapsedTime >= this.GoldProductionData.productionTime) {
 			ProduceGold();
-			this.elapsedTime -= this.goldProductionUnit.productionTime; // DO NOT SET TO ZERO HERE
+			this.elapsedTime -= this.GoldProductionData.productionTime; // DO NOT SET TO ZERO HERE
 		}
 	}
 	// something costs 100ct, and I get 40ct per day:
@@ -44,13 +44,13 @@ public class GoldProductionUnitScript : MonoBehaviour {
 
 	void ProduceGold() {
 		var gold = FindObjectOfType<Gold>();
-		gold.GoldAmount += this.goldProductionUnit.productionAmount * this.GoldPressAmount;
+		gold.GoldAmount += this.GoldProductionData.productionAmount * this.GoldPressAmount;
 	}
 
 	public void BuyGoldPress() {
 		var gold = FindObjectOfType<Gold>();
-		if (gold.GoldAmount >= this.goldProductionUnit.costs) {
-			gold.GoldAmount -= this.goldProductionUnit.costs;
+		if (gold.GoldAmount >= this.GoldProductionData.costs) {
+			gold.GoldAmount -= this.GoldProductionData.costs;
 			this.GoldPressAmount += 1;
 		}
 	}
