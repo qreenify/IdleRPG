@@ -1,7 +1,11 @@
+using UnityEngine;
+
 [System.Serializable]
-public class GoldProductionData {
+[CreateAssetMenu]
+public class GoldProductionData : ScriptableObject {
 	public string name = "GoldProducer";
 	public int productionAmount = 1;
 	public int costs = 100;
 	public float productionTime = 1f;
 }
+
