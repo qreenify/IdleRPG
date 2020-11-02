@@ -7,26 +7,30 @@ public class GoldProducer : MonoBehaviour {
 	public Text purchaseButtonLabel;
 	float elapsedTime;
 
+	int Amount {
+		get => PlayerPrefs.GetInt(this.GoldProductionData.name, 0);
+		set {
+			PlayerPrefs.SetInt(this.GoldProductionData.name, value);
+			UpdateAmountLabel();
+		}
+	}
+
 	public void SetUp(GoldProductionData goldProductionData) {
 		this.GoldProductionData = goldProductionData;
 		this.gameObject.name = goldProductionData.name;
 		this.purchaseButtonLabel.text = $"Purchase {goldProductionData.name}";
 	}
-	
-	public int GoldPressAmount {
-		get => PlayerPrefs.GetInt(this.GoldProductionData.name, 0);
-		set {
-			PlayerPrefs.SetInt(this.GoldProductionData.name, value);
-			UpdateGoldPressAmountLabel();
+
+	public void Purchase() {
+		var gold = FindObjectOfType<Gold>();
+		if (gold.GoldAmount >= this.GoldProductionData.costs) {
+			gold.GoldAmount -= this.GoldProductionData.costs;
+			this.Amount += 1;
 		}
 	}
 
-	void UpdateGoldPressAmountLabel() {
-		this.goldAmountText.text = this.GoldPressAmount.ToString($"0 {this.GoldProductionData.name}");
-	}
-
 	void Start() {
-		UpdateGoldPressAmountLabel();
+		UpdateAmountLabel();
 	}
 	
 	void Update() {
@@ -36,22 +40,13 @@ public class GoldProducer : MonoBehaviour {
 			this.elapsedTime -= this.GoldProductionData.productionTime; // DO NOT SET TO ZERO HERE
 		}
 	}
-	// something costs 100ct, and I get 40ct per day:
-	// IN CASE WE SET IT TO ZERO:
-	// 40ct 80ct [120ct (Buy for 100ct) 0ct] 40ct 80ct // In 5 Days, I can buy something for 100ct once, and I have 80ct
-	// IN CASE WE DECREASE IT BY THE COSTS:
-	// 40ct 80ct [120ct (Buy for 100ct) 20ct] 60ct [100ct (Buy for 100ct) 0ct] // In 5 Days, I can buy something for 100ct twice
+
+	void UpdateAmountLabel() {
+		this.goldAmountText.text = this.Amount.ToString($"0 {this.GoldProductionData.name}");
+	}
 
 	void ProduceGold() {
 		var gold = FindObjectOfType<Gold>();
-		gold.GoldAmount += this.GoldProductionData.productionAmount * this.GoldPressAmount;
-	}
-
-	public void BuyGoldPress() {
-		var gold = FindObjectOfType<Gold>();
-		if (gold.GoldAmount >= this.GoldProductionData.costs) {
-			gold.GoldAmount -= this.GoldProductionData.costs;
-			this.GoldPressAmount += 1;
-		}
+		gold.GoldAmount += this.GoldProductionData.productionAmount * this.Amount;
 	}
 }

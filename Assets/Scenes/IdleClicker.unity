@@ -153,9 +153,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldProductionUnits:
   - {fileID: 11400000, guid: 5dcddfdc09ef74beca94fb1ee63b1ae2, type: 2}
+  - {fileID: 11400000, guid: a3812198572424113bc9fab66c69ad18, type: 2}
   - {fileID: 11400000, guid: 4c5e1161b707e465ea9001a46005979b, type: 2}
-  goldProductionUnitParent: {fileID: 91074346}
-  goldProductionUnitPrefab: {fileID: 5180716211921746249, guid: 8686297164f78406ca12fd2a46702259,
+  - {fileID: 11400000, guid: 868ddaa11da9b47c492dbc7d5dd1512a, type: 2}
+  goldProductionUnitPrefab: {fileID: 5180716211921746248, guid: 8686297164f78406ca12fd2a46702259,
     type: 3}
 --- !u!224 &91074346
 RectTransform:

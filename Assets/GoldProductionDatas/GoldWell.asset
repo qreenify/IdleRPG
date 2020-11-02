@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8796e54c1bdf471b8f2ef7f5cceade73, type: 3}
-  m_Name: GoldMountain
+  m_Name: GoldWell
   m_EditorClassIdentifier: 
-  name: GoldMountain
   productionAmount: 25
   costs: 10000
   productionTime: 1

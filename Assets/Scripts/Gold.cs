@@ -4,11 +4,12 @@ using UnityEngine.UI;
 public class Gold : MonoBehaviour {
 	public int goldAmountPerClick = 5;
 	public Text goldAmountText;
+	const string goldPlayerPrefKey = "Gold";
 
 	public int GoldAmount {
-		get => PlayerPrefs.GetInt("Gold", 1);
+		get => PlayerPrefs.GetInt(goldPlayerPrefKey, 1);
 		set {
-			PlayerPrefs.SetInt("Gold", value);
+			PlayerPrefs.SetInt(goldPlayerPrefKey, value);
 			UpdateGoldAmountLabel();
 		}
 	}
@@ -22,6 +23,6 @@ public class Gold : MonoBehaviour {
 	}
 
 	public void ProduceGold() {
-		this.GoldAmount += this.goldAmountPerClick; // this.goldAmount = this.goldAmount + goldAmountPerClick;
+		this.GoldAmount += this.goldAmountPerClick; // this.GoldAmount = this.GoldAmount + this.goldAmountPerClick;
 	}
 }
