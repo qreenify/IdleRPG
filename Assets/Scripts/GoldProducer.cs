@@ -15,15 +15,17 @@ public class GoldProducer : MonoBehaviour {
 		}
 	}
 
+	bool IsAffordable => FindObjectOfType<Gold>().GoldAmount >= this.GoldProductionData.costs;
+
 	public void SetUp(GoldProductionData goldProductionData) {
 		this.GoldProductionData = goldProductionData;
 		this.gameObject.name = goldProductionData.name;
-		this.purchaseButtonLabel.text = $"Purchase {goldProductionData.name}";
+		this.purchaseButtonLabel.text = $"Purchase for {goldProductionData.costs}";
 	}
 
 	public void Purchase() {
-		var gold = FindObjectOfType<Gold>();
-		if (gold.GoldAmount >= this.GoldProductionData.costs) {
+		if (this.IsAffordable) {
+			var gold = FindObjectOfType<Gold>();
 			gold.GoldAmount -= this.GoldProductionData.costs;
 			this.Amount += 1;
 		}
@@ -39,6 +41,12 @@ public class GoldProducer : MonoBehaviour {
 			ProduceGold();
 			this.elapsedTime -= this.GoldProductionData.productionTime; // DO NOT SET TO ZERO HERE
 		}
+
+		UpdateTextColor();
+	}
+
+	void UpdateTextColor() {
+		this.purchaseButtonLabel.color = this.IsAffordable ? Color.black : Color.red;
 	}
 
 	void UpdateAmountLabel() {
