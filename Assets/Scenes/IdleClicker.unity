@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -308,9 +308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47327dd07dc0540c08347b7d691c7836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level:
-    level: 3
-    experience: 199
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
