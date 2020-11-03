@@ -5,6 +5,7 @@ public class GoldProducer : MonoBehaviour {
 	public GoldProductionData GoldProductionData;
 	public Text goldAmountText;
 	public Text purchaseButtonLabel;
+	public ProductionPopUp popupPrefab;
 	float elapsedTime;
 
 	int Amount {
@@ -15,19 +16,20 @@ public class GoldProducer : MonoBehaviour {
 		}
 	}
 
-	bool IsAffordable => FindObjectOfType<Gold>().GoldAmount >= this.GoldProductionData.costs;
+	bool IsAffordable => FindObjectOfType<Gold>().GoldAmount >= this.GoldProductionData.GetActualCosts(this.Amount);
 
 	public void SetUp(GoldProductionData goldProductionData) {
 		this.GoldProductionData = goldProductionData;
 		this.gameObject.name = goldProductionData.name;
-		this.purchaseButtonLabel.text = $"Purchase for {goldProductionData.costs}";
+		this.purchaseButtonLabel.text = $"Purchase for {this.GoldProductionData.GetActualCosts(this.Amount)}";
 	}
 
 	public void Purchase() {
 		if (this.IsAffordable) {
 			var gold = FindObjectOfType<Gold>();
-			gold.GoldAmount -= this.GoldProductionData.costs;
+			gold.GoldAmount -= this.GoldProductionData.GetActualCosts(this.Amount);
 			this.Amount += 1;
+			this.purchaseButtonLabel.text = $"Purchase for {this.GoldProductionData.GetActualCosts(this.Amount)}";
 		}
 	}
 
@@ -54,7 +56,11 @@ public class GoldProducer : MonoBehaviour {
 	}
 
 	void ProduceGold() {
+		if (this.Amount == 0)
+			return;
 		var gold = FindObjectOfType<Gold>();
-		gold.GoldAmount += this.GoldProductionData.productionAmount * this.Amount;
+		gold.GoldAmount += this.GoldProductionData.ProductionAmount * this.Amount;
+		var instance = Instantiate(this.popupPrefab, this.transform);
+		instance.GetComponent<Text>().text = $"+{this.GoldProductionData.ProductionAmount * this.Amount}";
 	}
 }

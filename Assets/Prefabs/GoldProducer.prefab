@@ -54,6 +54,10 @@ MonoBehaviour:
   GoldProductionData: {fileID: 0}
   goldAmountText: {fileID: 5180716212640738329}
   purchaseButtonLabel: {fileID: 5180716212195582697}
+  popupPrefab: {fileID: 7931557911440886001, guid: 4a2c1f99b5e8342469ea5b1efbf4b803,
+    type: 3}
+  foo:
+    bar: 5
 --- !u!114 &4310924990199828131
 MonoBehaviour:
   m_ObjectHideFlags: 0
