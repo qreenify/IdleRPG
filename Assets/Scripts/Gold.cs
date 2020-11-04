@@ -5,18 +5,10 @@ using UnityEngine;
 public class Gold : ScriptableObject {
 	public int goldAmountPerClick = 5;
 	const string goldPlayerPrefKey = "Gold";
-	int gold;
 
 	public int GoldAmount {
 		get => PlayerPrefs.GetInt(goldPlayerPrefKey, 1);
-		set {
-			this.gold = value;
-			PlayerPrefs.SetInt(goldPlayerPrefKey, value);
-		}
-	}
-
-	void Awake() {
-		this.gold = this.GoldAmount;
+		set => PlayerPrefs.SetInt(goldPlayerPrefKey, value);
 	}
 
 	public void ProduceGold() {
