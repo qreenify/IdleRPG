@@ -6,6 +6,7 @@ public class GoldProducer : MonoBehaviour {
 	public Text goldAmountText;
 	public Text purchaseButtonLabel;
 	public ProductionPopUp popupPrefab;
+	public Gold gold;
 	float elapsedTime;
 
 	int Amount {
@@ -16,7 +17,7 @@ public class GoldProducer : MonoBehaviour {
 		}
 	}
 
-	bool IsAffordable => FindObjectOfType<Gold>().GoldAmount >= this.GoldProductionData.GetActualCosts(this.Amount);
+	bool IsAffordable => this.gold.GoldAmount >= this.GoldProductionData.GetActualCosts(this.Amount);
 
 	public void SetUp(GoldProductionData goldProductionData) {
 		this.GoldProductionData = goldProductionData;
@@ -26,8 +27,7 @@ public class GoldProducer : MonoBehaviour {
 
 	public void Purchase() {
 		if (this.IsAffordable) {
-			var gold = FindObjectOfType<Gold>();
-			gold.GoldAmount -= this.GoldProductionData.GetActualCosts(this.Amount);
+			this.gold.GoldAmount -= this.GoldProductionData.GetActualCosts(this.Amount);
 			this.Amount += 1;
 			this.purchaseButtonLabel.text = $"Purchase for {this.GoldProductionData.GetActualCosts(this.Amount)}";
 		}
@@ -58,8 +58,7 @@ public class GoldProducer : MonoBehaviour {
 	void ProduceGold() {
 		if (this.Amount == 0)
 			return;
-		var gold = FindObjectOfType<Gold>();
-		gold.GoldAmount += this.GoldProductionData.ProductionAmount * this.Amount;
+		this.gold.GoldAmount += this.GoldProductionData.ProductionAmount * this.Amount;
 		var instance = Instantiate(this.popupPrefab, this.transform);
 		instance.GetComponent<Text>().text = $"+{this.GoldProductionData.ProductionAmount * this.Amount}";
 	}

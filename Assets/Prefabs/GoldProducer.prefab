@@ -57,6 +57,7 @@ MonoBehaviour:
   purchaseButtonLabel: {fileID: 5180716212195582697}
   popupPrefab: {fileID: 7931557911440886001, guid: 4a2c1f99b5e8342469ea5b1efbf4b803,
     type: 3}
+  gold: {fileID: 11400000, guid: c41718927120844239b7ad61f84e68a9, type: 2}
 --- !u!114 &4310924990199828131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
   m_MinWidth: -1
-  m_MinHeight: 30
+  m_MinHeight: 33
   m_PreferredWidth: -1
   m_PreferredHeight: 50
   m_FlexibleWidth: -1

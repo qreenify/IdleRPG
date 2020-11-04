@@ -1,25 +1,22 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
+using UnityEngine;
 
-public class Gold : MonoBehaviour {
+[CreateAssetMenu]
+public class Gold : ScriptableObject {
 	public int goldAmountPerClick = 5;
-	public Text goldAmountText;
 	const string goldPlayerPrefKey = "Gold";
+	int gold;
 
 	public int GoldAmount {
 		get => PlayerPrefs.GetInt(goldPlayerPrefKey, 1);
 		set {
+			this.gold = value;
 			PlayerPrefs.SetInt(goldPlayerPrefKey, value);
-			UpdateGoldAmountLabel();
 		}
 	}
 
-	void UpdateGoldAmountLabel() {
-		this.goldAmountText.text = this.GoldAmount.ToString("0 Gold");
-	}
-
-	void Start() {
-		UpdateGoldAmountLabel();
+	void Awake() {
+		this.gold = this.GoldAmount;
 	}
 
 	public void ProduceGold() {

@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8796e54c1bdf471b8f2ef7f5cceade73, type: 3}
-  m_Name: GoldFountain
+  m_Script: {fileID: 11500000, guid: 97bb9161bb884de38c3b4b5027bea8f2, type: 3}
+  m_Name: InventoryManager
   m_EditorClassIdentifier: 
-  costs: 1000
-  costMultiplier: 1.1
-  productionTime: 1
-  productionAmount: 5
-  item: {fileID: 11400000, guid: 9a6731b68c56e40369d15fc262c8a2f9, type: 2}
+  price: 0

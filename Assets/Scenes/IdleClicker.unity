@@ -211,12 +211,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 119760453}
-  - component: {fileID: 119760455}
-  - component: {fileID: 119760454}
   - component: {fileID: 119760456}
-  - component: {fileID: 119760457}
+  - component: {fileID: 119760454}
+  - component: {fileID: 119760455}
   m_Layer: 5
-  m_Name: Gold
+  m_Name: GoldUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,8 +272,22 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0 Gold
---- !u!222 &119760455
+  m_Text: 752 Gold
+--- !u!114 &119760455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119760452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af2325a0030e4cf592a2dfa2876dc73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldAmountText: {fileID: 119760454}
+  gold: {fileID: 11400000, guid: c41718927120844239b7ad61f84e68a9, type: 2}
+--- !u!222 &119760456
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,32 +295,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119760452}
   m_CullTransparentMesh: 0
---- !u!114 &119760456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 119760452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1bc466bb0a404d9a9fada5f4518eb5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmountPerClick: 5
-  goldAmountText: {fileID: 119760454}
---- !u!114 &119760457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 119760452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47327dd07dc0540c08347b7d691c7836, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +459,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 119760456}
+      - m_Target: {fileID: 0}
         m_MethodName: ProduceGold
         m_Mode: 1
         m_Arguments:

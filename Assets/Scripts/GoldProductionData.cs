@@ -11,6 +11,7 @@ public class GoldProductionData : ScriptableObject {
 	// (EXCLUSIVE ARGUMENT) make sure that people do not set / write this value on a scriptable object
 	[SerializeField] int productionAmount = 1;
 	public int ProductionAmount => this.productionAmount;
+	public Item item;
 	
 	public int GetActualCosts(int amount) {
 		var result = this.costs * Mathf.Pow(this.costMultiplier, amount);
