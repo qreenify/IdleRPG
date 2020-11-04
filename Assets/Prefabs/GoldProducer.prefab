@@ -55,6 +55,7 @@ MonoBehaviour:
   GoldProductionData: {fileID: 0}
   goldAmountText: {fileID: 5180716212640738329}
   purchaseButtonLabel: {fileID: 5180716212195582697}
+  upgradeButtonLabel: {fileID: 5485803915242519513}
   popupPrefab: {fileID: 7931557911440886001, guid: 4a2c1f99b5e8342469ea5b1efbf4b803,
     type: 3}
   gold: {fileID: 11400000, guid: c41718927120844239b7ad61f84e68a9, type: 2}
@@ -484,7 +485,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5180716211921746248}
-        m_MethodName: Purchase
+        m_MethodName: Upgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
