@@ -7,22 +7,20 @@ public class Purchasable {
 	public Text buttonLabel;
 	GoldProductionData goldProductionData;
 	Gold gold;
-	string playerPrefSuffix;
-	string purchaseTerm;
+	string productId;
 
 	bool IsAffordable => this.gold.GoldAmount >= this.goldProductionData.GetActualCosts(this.Amount);
 
 	public int Amount {
-		get => PlayerPrefs.GetInt(this.goldProductionData.name+this.playerPrefSuffix, 0);
-		private set => PlayerPrefs.SetInt(this.goldProductionData.name+this.playerPrefSuffix, value);
+		get => PlayerPrefs.GetInt(this.goldProductionData.name+"_"+this.productId, 0);
+		private set => PlayerPrefs.SetInt(this.goldProductionData.name+"_"+this.productId, value);
 	}
 
-	public void SetUp(GoldProductionData goldProductionData, Gold gold, string playerPrefSuffix, string purchaseTerm) {
+	public void SetUp(GoldProductionData goldProductionData, Gold gold, string productId) {
 		this.goldProductionData = goldProductionData;
 		this.gold = gold;
-		this.playerPrefSuffix = playerPrefSuffix;
-		this.purchaseTerm = purchaseTerm;
-		this.buttonLabel.text = $"{purchaseTerm} for {goldProductionData.GetActualCosts(this.Amount)}";
+		this.productId = productId;
+		this.buttonLabel.text = $"Add {productId} for {goldProductionData.GetActualCosts(this.Amount)}";
 	}
 
 	public void Purchase() {
@@ -30,7 +28,7 @@ public class Purchasable {
 			return;
 		this.gold.GoldAmount -= this.goldProductionData.GetActualCosts(this.Amount);
 		this.Amount += 1;
-		this.buttonLabel.text = $"{this.purchaseTerm} for {this.goldProductionData.GetActualCosts(this.Amount)}";
+		this.buttonLabel.text = $"Add {this.productId} for {this.goldProductionData.GetActualCosts(this.Amount)}";
 	}
 
 	public void Update() => UpdateTextColor();
