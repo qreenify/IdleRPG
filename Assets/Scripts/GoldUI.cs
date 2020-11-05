@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class GoldUI : MonoBehaviour {
 	public Text goldAmountText;
-	public Resource gold;
+	public Gold gold;
 
 	void UpdateGoldAmountLabel() {
 		this.goldAmountText.text = this.gold.GoldAmount.ToString("0 Gold");

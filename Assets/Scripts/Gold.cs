@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu]
-public class Resource : ScriptableObject {
+public class Gold : ScriptableObject {
 	public int goldAmountPerClick = 5;
 	const string goldPlayerPrefKey = "Gold";
 

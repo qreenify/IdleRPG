@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: 
   goldAmountPerClick: 5
-  goldText: {fileID: 398909029301866474, guid: 231015db4e1d5411c83ba79699de6387, type: 3}
+  goldAmountText: {fileID: 2882213725270829570, guid: 18520d9110143435a817fce3d70b1e58,
+    type: 3}
