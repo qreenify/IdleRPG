@@ -4,19 +4,11 @@ using UnityEngine.UI;
 public class GoldProducer : MonoBehaviour {
 	public GoldProductionData GoldProductionData;
 	public Text goldAmountText;
-	public Text purchaseButtonLabel;
 	public Text upgradeButtonLabel;
 	public ProductionPopUp popupPrefab;
 	public Gold gold;
 	float elapsedTime;
-
-	int Amount {
-		get => PlayerPrefs.GetInt(this.GoldProductionData.name, 0);
-		set {
-			PlayerPrefs.SetInt(this.GoldProductionData.name, value);
-			UpdateTitleLabel();
-		}
-	}
+	Purchasable amount;
 
 	string UpgradeAmountPlayerPrefKey => $"{this.GoldProductionData.name}_Upgrade";
 
@@ -28,23 +20,12 @@ public class GoldProducer : MonoBehaviour {
 		}
 	}
 
-	bool IsAffordable => this.gold.GoldAmount >= this.GoldProductionData.GetActualCosts(this.Amount);
 	bool IsUpgradeAffordable => this.gold.GoldAmount >= this.GoldProductionData.GetActualCosts(this.UpgradeAmount);
 
 	public void SetUp(GoldProductionData goldProductionData) {
 		this.GoldProductionData = goldProductionData;
 		this.gameObject.name = goldProductionData.name;
-		this.purchaseButtonLabel.text = $"Purchase for {this.GoldProductionData.GetActualCosts(this.Amount)}";
 		this.upgradeButtonLabel.text = $"Upgrade for {this.GoldProductionData.GetActualCosts(this.UpgradeAmount)}";
-		UpdateTitleLabel();
-	}
-
-	public void Purchase() {
-		if (this.IsAffordable) {
-			this.gold.GoldAmount -= this.GoldProductionData.GetActualCosts(this.Amount);
-			this.Amount += 1;
-			this.purchaseButtonLabel.text = $"Purchase for {this.GoldProductionData.GetActualCosts(this.Amount)}";
-		}
 	}
 
 	public void Upgrade() {
@@ -63,19 +44,19 @@ public class GoldProducer : MonoBehaviour {
 		}
 
 		UpdateTextColor();
+		UpdateTitleLabel();
 	}
 
 	void UpdateTextColor() {
-		this.purchaseButtonLabel.color = this.IsAffordable ? Color.black : Color.red;
 		this.upgradeButtonLabel.color = this.IsUpgradeAffordable ? Color.black : Color.red;
 	}
 
 	void UpdateTitleLabel() {
-		this.goldAmountText.text = $"{this.Amount}x {this.GoldProductionData.name} Level {this.UpgradeAmount}";
+		this.goldAmountText.text = $"{this.amount.Amount}x {this.GoldProductionData.name} Level {this.UpgradeAmount}";
 	}
 
 	void ProduceGold() {
-		if (this.Amount == 0)
+		if (this.amount.Amount == 0)
 			return;
 		this.gold.GoldAmount += Mathf.RoundToInt(CalculateProductionAmount());
 		var instance = Instantiate(this.popupPrefab, this.transform);
@@ -83,6 +64,6 @@ public class GoldProducer : MonoBehaviour {
 	}
 
 	float CalculateProductionAmount() {
-		return this.GoldProductionData.GetProductionAmount(this.UpgradeAmount) * this.Amount;
+		return this.GoldProductionData.GetProductionAmount(this.UpgradeAmount) * this.amount.Amount;
 	}
 }
