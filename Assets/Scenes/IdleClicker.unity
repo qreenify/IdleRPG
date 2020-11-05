@@ -459,7 +459,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11400000, guid: c41718927120844239b7ad61f84e68a9, type: 2}
         m_MethodName: ProduceGold
         m_Mode: 1
         m_Arguments:
