@@ -36,6 +36,7 @@ public class GoldProducer : MonoBehaviour {
 		this.gameObject.name = goldProductionData.name;
 		this.purchaseButtonLabel.text = $"Purchase for {this.GoldProductionData.GetActualCosts(this.Amount)}";
 		this.upgradeButtonLabel.text = $"Upgrade for {this.GoldProductionData.GetActualCosts(this.UpgradeAmount)}";
+		UpdateTitleLabel();
 	}
 
 	public void Purchase() {
@@ -52,10 +53,6 @@ public class GoldProducer : MonoBehaviour {
 			this.UpgradeAmount += 1;
 			this.upgradeButtonLabel.text = $"Upgrade for {this.GoldProductionData.GetActualCosts(this.UpgradeAmount)}";
 		}
-	}
-
-	void Start() {
-		UpdateTitleLabel();
 	}
 
 	void Update() {
