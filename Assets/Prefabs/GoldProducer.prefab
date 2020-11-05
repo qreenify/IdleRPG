@@ -54,11 +54,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoldProductionData: {fileID: 0}
   goldAmountText: {fileID: 5180716212640738329}
-  purchaseButtonLabel: {fileID: 5180716212195582697}
   upgradeButtonLabel: {fileID: 5485803915242519513}
   popupPrefab: {fileID: 7931557911440886001, guid: 4a2c1f99b5e8342469ea5b1efbf4b803,
     type: 3}
   gold: {fileID: 11400000, guid: c41718927120844239b7ad61f84e68a9, type: 2}
+  amount:
+    buttonLabel: {fileID: 5180716212195582697}
+  upgrade:
+    buttonLabel: {fileID: 5485803915242519513}
 --- !u!114 &4310924990199828131
 MonoBehaviour:
   m_ObjectHideFlags: 0

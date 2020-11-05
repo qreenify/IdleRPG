@@ -1,38 +1,38 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Serializable]
 public class Purchasable {
-	public Text purchaseButtonLabel;
+	public Text buttonLabel;
 	GoldProductionData goldProductionData;
 	Gold gold;
+	string playerPrefSuffix;
+	string purchaseTerm;
+
 	bool IsAffordable => this.gold.GoldAmount >= this.goldProductionData.GetActualCosts(this.Amount);
 
 	public int Amount {
-		get => PlayerPrefs.GetInt(this.goldProductionData.name, 0);
-		private set {
-			PlayerPrefs.SetInt(this.goldProductionData.name, value);
-		}
+		get => PlayerPrefs.GetInt(this.goldProductionData.name+this.playerPrefSuffix, 0);
+		private set => PlayerPrefs.SetInt(this.goldProductionData.name+this.playerPrefSuffix, value);
 	}
 
-	public void SetUp(GoldProductionData goldProductionData, Gold gold) {
+	public void SetUp(GoldProductionData goldProductionData, Gold gold, string playerPrefSuffix, string purchaseTerm) {
 		this.goldProductionData = goldProductionData;
 		this.gold = gold;
-		this.purchaseButtonLabel.text = $"Purchase for {goldProductionData.GetActualCosts(this.Amount)}";
+		this.playerPrefSuffix = playerPrefSuffix;
+		this.purchaseTerm = purchaseTerm;
+		this.buttonLabel.text = $"{purchaseTerm} for {goldProductionData.GetActualCosts(this.Amount)}";
 	}
 
 	public void Purchase() {
-		if (this.IsAffordable) {
-			this.gold.GoldAmount -= this.goldProductionData.GetActualCosts(this.Amount);
-			this.Amount += 1;
-			this.purchaseButtonLabel.text = $"Purchase for {this.goldProductionData.GetActualCosts(this.Amount)}";
-		}
+		if (!this.IsAffordable) 
+			return;
+		this.gold.GoldAmount -= this.goldProductionData.GetActualCosts(this.Amount);
+		this.Amount += 1;
+		this.buttonLabel.text = $"{this.purchaseTerm} for {this.goldProductionData.GetActualCosts(this.Amount)}";
 	}
 
-	void Update() {
-		UpdateTextColor();
-	}
-
-	void UpdateTextColor() {
-		this.purchaseButtonLabel.color = this.IsAffordable ? Color.black : Color.red;
-	}
+	public void Update() => UpdateTextColor();
+	void UpdateTextColor() => this.buttonLabel.color = this.IsAffordable ? Color.black : Color.red;
 }
