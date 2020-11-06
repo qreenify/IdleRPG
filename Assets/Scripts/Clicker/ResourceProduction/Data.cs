@@ -1,9 +1,9 @@
 using Resources;
 using UnityEngine;
 
-namespace Clicker {
-	[CreateAssetMenu]
-	public class ResourceProductionData : ScriptableObject { 
+namespace Clicker.ResourceProduction {
+	[CreateAssetMenu(menuName="Clicker/ResourceProduction/Data", fileName="ResourceProductionData")] // "ResourceProductionData"
+	public class Data : ScriptableObject { 
 		[SerializeField] int costs = 100;
 		public Resource costsResource;
 		[SerializeField] float costMultiplier = 1.1f;

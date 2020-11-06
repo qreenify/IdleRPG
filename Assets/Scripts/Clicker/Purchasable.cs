@@ -7,30 +7,30 @@ namespace Clicker {
 	[Serializable]
 	public class Purchasable {
 		public Text buttonLabel;
-		ResourceProductionData resourceProductionData;
+		ResourceProduction.Data data;
 		Resource resource;
 		string productId;
 
-		bool IsAffordable => this.resource.Amount >= this.resourceProductionData.GetActualCosts(this.Amount);
+		bool IsAffordable => this.resource.Amount >= this.data.GetActualCosts(this.Amount);
 
 		public int Amount {
-			get => PlayerPrefs.GetInt(this.resourceProductionData.name+"_"+this.productId, 0);
-			private set => PlayerPrefs.SetInt(this.resourceProductionData.name+"_"+this.productId, value);
+			get => PlayerPrefs.GetInt(this.data.name+"_"+this.productId, 0);
+			private set => PlayerPrefs.SetInt(this.data.name+"_"+this.productId, value);
 		}
 
-		public void SetUp(ResourceProductionData resourceProductionData, Resource resource, string productId) {
-			this.resourceProductionData = resourceProductionData;
+		public void SetUp(ResourceProduction.Data data, Resource resource, string productId) {
+			this.data = data;
 			this.resource = resource;
 			this.productId = productId;
-			this.buttonLabel.text = $"Add {productId} for {resourceProductionData.GetActualCosts(this.Amount)} {resource.name}";
+			this.buttonLabel.text = $"Add {productId} for {data.GetActualCosts(this.Amount)} {resource.name}";
 		}
 
 		public void Purchase() {
 			if (!this.IsAffordable) 
 				return;
-			this.resource.Amount -= this.resourceProductionData.GetActualCosts(this.Amount);
+			this.resource.Amount -= this.data.GetActualCosts(this.Amount);
 			this.Amount += 1;
-			this.buttonLabel.text = $"Add {this.productId} for {this.resourceProductionData.GetActualCosts(this.Amount)} {this.resource.name}";
+			this.buttonLabel.text = $"Add {this.productId} for {this.data.GetActualCosts(this.Amount)} {this.resource.name}";
 		}
 
 		public void Update() => UpdateTextColor();
