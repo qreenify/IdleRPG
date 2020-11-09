@@ -45,7 +45,7 @@ namespace Clicker.ResourceProduction {
 			if (this.amount.Amount == 0)
 				return;
 			var productionAmount = this.Data.GetProductionAmount(this.upgrade.Amount, this.amount.Amount);
-			productionAmount.resource.Amount += productionAmount.amount;
+			productionAmount.Create();
 			var instance = Instantiate(this.popupPrefab, this.transform);
 			instance.GetComponent<Text>().text = $"+{productionAmount}";
 		}

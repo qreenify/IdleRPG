@@ -12,6 +12,7 @@ namespace Clicker.ResourceProduction {
 		[SerializeField] float productionMultiplier = 1.05f;
 	
 		public ResourceAmount GetActualCosts(int amount) {
+			// TODO: no need for new () anymore when ResourceAmount is a struct
 			var result = new ResourceAmount();
 			result.resource = this.costs.resource;
 			result.amount = Mathf.RoundToInt(this.costs.amount * Mathf.Pow(this.costMultiplier, amount));
@@ -19,6 +20,7 @@ namespace Clicker.ResourceProduction {
 		}
 	
 		public ResourceAmount GetProductionAmount(int upgradeAmount, int unitCount) {
+			// TODO: no need for new () anymore when ResourceAmount is a struct
 			var result = new ResourceAmount();
 			result.resource = this.production.resource;
 			result.amount = Mathf.RoundToInt(this.production.amount * Mathf.Pow(this.productionMultiplier, upgradeAmount) * unitCount);
