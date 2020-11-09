@@ -1,6 +1,6 @@
 ﻿using Common;
+using Resources;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Clicker.ResourceProduction {
@@ -15,8 +15,8 @@ namespace Clicker.ResourceProduction {
 		public void SetUp(Data data) {
 			this.Data = data;
 			this.gameObject.name = data.name;
-			this.amount.SetUp(data, data.costsResource, "Count");
-			this.upgrade.SetUp(data, data.costsResource, "Level");
+			this.amount.SetUp(data, "Count");
+			this.upgrade.SetUp(data, "Level");
 		}
 
 		public void Purchase() => this.amount.Purchase();
@@ -44,13 +44,18 @@ namespace Clicker.ResourceProduction {
 		void Produce() {
 			if (this.amount.Amount == 0)
 				return;
-			this.Data.productionResource.Amount += Mathf.RoundToInt(CalculateProductionAmount());
+			var productionAmount = CalculateProductionAmount();
+			productionAmount.resource.Amount += productionAmount.amount;
 			var instance = Instantiate(this.popupPrefab, this.transform);
-			instance.GetComponent<Text>().text = $"+{CalculateProductionAmount()} {this.Data.productionResource.name}";
+			instance.GetComponent<Text>().text = $"+{productionAmount.amount} {productionAmount.resource.name}";
 		}
 
-		float CalculateProductionAmount() {
-			return this.Data.GetProductionAmount(this.upgrade.Amount) * this.amount.Amount;
+		ResourceAmount CalculateProductionAmount() {
+			var result = new ResourceAmount();
+			var productionAmount = this.Data.GetProductionAmount(this.upgrade.Amount);
+			result.amount = productionAmount.amount * this.amount.Amount;
+			result.resource = productionAmount.resource;
+			return result;
 		}
 	}
 }

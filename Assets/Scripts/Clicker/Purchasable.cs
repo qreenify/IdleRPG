@@ -11,7 +11,7 @@ namespace Clicker {
 		Resource resource;
 		string productId;
 
-		bool IsAffordable => this.resource.Amount >= this.data.GetActualCosts(this.Amount);
+		bool IsAffordable => this.resource.Amount >= this.data.GetActualCosts(this.Amount).amount;
 
 		public int Amount {
 			get => PlayerPrefs.GetInt(this.data.name+"_"+this.productId, 0);
@@ -22,15 +22,15 @@ namespace Clicker {
 			this.data = data;
 			this.resource = resource;
 			this.productId = productId;
-			this.buttonLabel.text = $"Add {productId} for {data.GetActualCosts(this.Amount)} {resource.name}";
+			this.buttonLabel.text = $"Add {productId} for {data.GetActualCosts(this.Amount).amount} {resource.name}";
 		}
 
 		public void Purchase() {
 			if (!this.IsAffordable) 
 				return;
-			this.resource.Amount -= this.data.GetActualCosts(this.Amount);
+			this.resource.Amount -= this.data.GetActualCosts(this.Amount).amount;
 			this.Amount += 1;
-			this.buttonLabel.text = $"Add {this.productId} for {this.data.GetActualCosts(this.Amount)} {this.resource.name}";
+			this.buttonLabel.text = $"Add {this.productId} for {this.data.GetActualCosts(this.Amount).amount} {this.resource.name}";
 		}
 
 		public void Update() => UpdateTextColor();
