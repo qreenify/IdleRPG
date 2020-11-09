@@ -33,7 +33,7 @@ namespace Clicker.ResourceProduction {
 			this.elapsedTime += Time.deltaTime;
 			if (this.elapsedTime >= this.Data.productionTime) {
 				Produce();
-				this.elapsedTime -= this.Data.productionTime; // DO NOT SET TO ZERO HERE
+				this.elapsedTime -= this.Data.productionTime;
 			}
 		}
 
@@ -47,7 +47,7 @@ namespace Clicker.ResourceProduction {
 			var productionAmount = this.Data.GetProductionAmount(this.upgrade.Amount, this.amount.Amount);
 			productionAmount.resource.Amount += productionAmount.amount;
 			var instance = Instantiate(this.popupPrefab, this.transform);
-			instance.GetComponent<Text>().text = $"+{productionAmount.amount} {productionAmount.resource.name}";
+			instance.GetComponent<Text>().text = $"+{productionAmount}";
 		}
 	}
 }

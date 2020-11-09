@@ -38,8 +38,9 @@ namespace Clicker {
 		}
 
 		void UpdateCostLabel() {
+			object o;
 			var updatedCosts = this.data.GetActualCosts(this.Amount);
-			this.buttonLabel.text = $"Add {this.productId} for {updatedCosts.amount} {updatedCosts.resource.name}";
+			this.buttonLabel.text = $"Add {this.productId} for {updatedCosts}";
 		}
 
 		public void Update() => UpdateTextColor();
