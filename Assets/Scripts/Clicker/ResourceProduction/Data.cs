@@ -18,10 +18,10 @@ namespace Clicker.ResourceProduction {
 			return result;
 		}
 	
-		public ResourceAmount GetProductionAmount(int upgradeAmount) {
+		public ResourceAmount GetProductionAmount(int upgradeAmount, int unitCount) {
 			var result = new ResourceAmount();
 			result.resource = this.production.resource;
-			result.amount = Mathf.RoundToInt(this.production.amount * Mathf.Pow(this.productionMultiplier, upgradeAmount));
+			result.amount = Mathf.RoundToInt(this.production.amount * Mathf.Pow(this.productionMultiplier, upgradeAmount) * unitCount);
 			return result;
 		}
 	}
