@@ -10,6 +10,8 @@ namespace Resources {
 		void Update() {
 			this.amountText.text = this.resource.Owned.ToString();
 			this.resourceNameText.text = this.resource.name;
+			this.amountText.color = this.resource.color;
+			this.resourceNameText.color = this.resource.color;
 		}
 
 		public void SetUp(Resource resource) {

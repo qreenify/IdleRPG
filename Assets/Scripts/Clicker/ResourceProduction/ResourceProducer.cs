@@ -52,6 +52,7 @@ namespace Clicker.ResourceProduction {
 			productionAmount.Create();
 			var instance = Instantiate(this.popupPrefab, this.transform);
 			instance.GetComponent<Text>().text = $"+{productionAmount}";
+			instance.GetComponent<Text>().color = productionAmount.resource.color;
 		}
 	}
 }

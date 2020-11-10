@@ -3,6 +3,7 @@
 namespace Resources {
 	[CreateAssetMenu]
 	public class Resource : ScriptableObject {
+		public Color color;
 		public int amountPerClick = 5;
 
 		// increases the amount of this Resource
