@@ -1,11 +1,12 @@
 ﻿using Common;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Clicker.ResourceProduction {
 	public class ResourceProducer : MonoBehaviour {
 		public Data Data;
-		public Text goldAmountText;
+		[FormerlySerializedAs("goldAmountText")] public Text titleText;
 		public FloatingText popupPrefab;
 		public Purchasable amount;
 		public Purchasable upgrade;
@@ -37,7 +38,7 @@ namespace Clicker.ResourceProduction {
 		}
 
 		void UpdateTitleLabel() {
-			this.goldAmountText.text = ToString();
+			this.titleText.text = ToString();
 		}
 
 		public override string ToString() {
