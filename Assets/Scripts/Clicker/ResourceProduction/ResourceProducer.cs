@@ -1,5 +1,4 @@
 ﻿using Common;
-using Resources;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,7 +37,11 @@ namespace Clicker.ResourceProduction {
 		}
 
 		void UpdateTitleLabel() {
-			this.goldAmountText.text = $"{this.amount.Amount}x {this.Data.name} Level {this.upgrade.Amount}";
+			this.goldAmountText.text = ToString();
+		}
+
+		public override string ToString() {
+			return $"{this.amount.Amount}x {this.Data.name} Level {this.upgrade.Amount}";
 		}
 
 		void Produce() {
