@@ -13,5 +13,9 @@ namespace Resources {
 		void Update() {
 			UpdateAmountLabel();
 		}
+
+		public void SetUp(Resource resource) {
+			this.resource = resource;
+		}
 	}
 }
