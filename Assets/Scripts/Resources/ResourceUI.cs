@@ -17,5 +17,9 @@ namespace Resources {
 		public void SetUp(Resource resource) {
 			this.resource = resource;
 		}
+
+		public void Produce() {
+			this.resource.Produce();
+		}
 	}
 }
