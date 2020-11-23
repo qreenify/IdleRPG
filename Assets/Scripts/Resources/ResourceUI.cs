@@ -1,14 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+
+[Serializable] public class IntEvent : UnityEvent<int>{}
+[Serializable] public class StringEvent : UnityEvent<string>{}
 
 namespace Resources {
 	public class ResourceUI : MonoBehaviour {
+
+		public StringEvent AmountChanged;
 		public Text amountText;
 		public Text resourceNameText;
-		public Resource resource;
+		Resource resource;
 
 		void Update() {
-			this.amountText.text = this.resource.Owned.ToString();
 			this.resourceNameText.text = this.resource.name;
 			this.amountText.color = this.resource.color;
 			this.resourceNameText.color = this.resource.color;
@@ -16,6 +22,11 @@ namespace Resources {
 
 		public void SetUp(Resource resource) {
 			this.resource = resource;
+			this.resource.OwnedChanged.AddListener(OnOwnedChanged);
+		}
+
+		void OnOwnedChanged(int value) {
+			this.AmountChanged.Invoke(value.ToString());
 		}
 
 		public void Produce() {
