@@ -15,6 +15,13 @@ namespace Resources {
 		Resource resource;
 
 		void Update() {
+			// TODO: These are all more easy to change.
+			// They only require you to add a public event.
+			// And Invoke the event directly within Setup
+			// Method (because the values only change then)
+			// Bonus: You can make color and name changeable
+			// using properties in Resource-Class and connect
+			// the listeners the same way as for Amount.
 			this.resourceNameText.text = this.resource.name;
 			this.amountText.color = this.resource.color;
 			this.resourceNameText.color = this.resource.color;
