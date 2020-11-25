@@ -1,6 +1,5 @@
 ﻿using Common;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Clicker.ResourceProduction {
@@ -20,14 +19,22 @@ namespace Clicker.ResourceProduction {
 			this.upgrade.SetUp(data, "Level");
 		}
 
-		public void Purchase() => this.amount.Purchase();
+		public void Purchase2() => this.amount.Purchase();
 		public void Upgrade() => this.upgrade.Purchase();
 
+		public void NewMethod1() {
+			
+		}
+		
 		void Update() {
 			UpdateProduction();
 			UpdateTitleLabel();
 			this.amount.Update();
 			this.upgrade.Update();
+		}
+		
+		public void NewMethod2() {
+			
 		}
 
 		void UpdateProduction() {
