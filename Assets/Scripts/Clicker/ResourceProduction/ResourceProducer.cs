@@ -1,6 +1,5 @@
 ﻿using Common;
 using UnityEngine;
-using UnityEngine.Accessibility;
 using UnityEngine.UI;
 
 namespace Clicker.ResourceProduction {
@@ -22,24 +21,12 @@ namespace Clicker.ResourceProduction {
 
 		public void Purchase() => this.amount.Purchase();
 		public void Upgrade() => this.upgrade.Purchase();
-
-		public void AnotherMethod() {
-
-		}
-
-		public void NewMethod1() {
-			
-		}
 		
 		void Update() {
 			UpdateProduction();
 			UpdateTitleLabel();
 			this.amount.Update();
 			this.upgrade.Update();
-		}
-		
-		public void NewMethod2() {
-			
 		}
 
 		void UpdateProduction() {
