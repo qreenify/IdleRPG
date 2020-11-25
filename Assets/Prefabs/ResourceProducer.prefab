@@ -87,7 +87,7 @@ MonoBehaviour:
     CostsLabelColorChanged:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5180716212195582697}
+        - m_Target: {fileID: 5180716212555338361}
           m_MethodName: set_color
           m_Mode: 0
           m_Arguments:
