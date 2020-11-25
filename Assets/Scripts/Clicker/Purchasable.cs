@@ -5,8 +5,8 @@ using UnityEngine.UI;
 namespace Clicker {
 	[Serializable]
 	public class Purchasable {
-		public Text buttonLabel;
 		public StringEvent CostsLabelChanged;
+		public ColorEvent CostsLabelColorChanged;
 		ResourceProduction.Data data;
 		string productId;
 
@@ -37,6 +37,6 @@ namespace Clicker {
 		}
 
 		public void Update() => UpdateTextColor();
-		void UpdateTextColor() => this.buttonLabel.color = this.IsAffordable ? Color.black : Color.red;
+		void UpdateTextColor() => this.CostsLabelColorChanged.Invoke(this.IsAffordable ? Color.black : Color.red);
 	}
 }
