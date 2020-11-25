@@ -20,7 +20,7 @@ namespace Clicker.ResourceProduction {
 			this.upgrade.SetUp(data, "Level");
 		}
 
-		public void Purchase2() => this.amount.Purchase();
+		public void Purchase() => this.amount.Purchase();
 		public void Upgrade() => this.upgrade.Purchase();
 
 		public void AnotherMethod() {
