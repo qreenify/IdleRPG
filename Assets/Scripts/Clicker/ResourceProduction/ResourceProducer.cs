@@ -24,6 +24,9 @@ namespace Clicker.ResourceProduction {
 		public void Upgrade() => this.upgrade.Purchase();
 
 		public void AnotherMethod() {
+
+		}
+
 		public void NewMethod1() {
 			
 		}
