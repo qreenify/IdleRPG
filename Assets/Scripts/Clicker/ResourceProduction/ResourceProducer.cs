@@ -42,7 +42,7 @@ namespace Clicker.ResourceProduction {
 		}
 
 		public void QuitGame() {
-			
+			// changes
 		}
 
 		void UpdateTitleLabel() {
