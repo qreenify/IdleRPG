@@ -37,6 +37,10 @@ namespace Clicker.ResourceProduction {
 			}
 		}
 
+		public void QuitGame() {
+			
+		}
+
 		void UpdateTitleLabel() {
 			this.TitleLabelChanged.Invoke(ToString());
 		}
