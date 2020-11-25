@@ -4,6 +4,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Clicker.ResourceProduction {
+	
 	public class ResourceProducer : MonoBehaviour {
 		public Data Data;
 		// TODO: Replace with public StringEvent

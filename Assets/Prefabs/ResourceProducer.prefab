@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5180716211921746248}
   - component: {fileID: 4310924990199828131}
   m_Layer: 0
-  m_Name: GoldProducer
+  m_Name: ResourceProducer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,16 +52,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fbc44c64cac4a0a99762d73dde3e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GoldProductionData: {fileID: 0}
-  goldAmountText: {fileID: 5180716212640738329}
-  upgradeButtonLabel: {fileID: 5485803915242519513}
+  Data: {fileID: 0}
+  titleText: {fileID: 5180716212640738329}
   popupPrefab: {fileID: 7931557911440886001, guid: 4a2c1f99b5e8342469ea5b1efbf4b803,
     type: 3}
-  gold: {fileID: 11400000, guid: c41718927120844239b7ad61f84e68a9, type: 2}
   amount:
     buttonLabel: {fileID: 5180716212195582697}
+    CostsLabelChanged:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5180716212195582697}
+          m_MethodName: set_text
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   upgrade:
     buttonLabel: {fileID: 5485803915242519513}
+    CostsLabelChanged:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5485803915242519513}
+          m_MethodName: set_text
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &4310924990199828131
 MonoBehaviour:
   m_ObjectHideFlags: 0
