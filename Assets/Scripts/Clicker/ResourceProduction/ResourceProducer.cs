@@ -29,6 +29,10 @@ namespace Clicker.ResourceProduction {
 			this.upgrade.Update();
 		}
 
+		public void ResetGame() {
+			
+		}
+
 		void UpdateProduction() {
 			this.elapsedTime += Time.deltaTime;
 			if (this.elapsedTime >= this.Data.productionTime) {
