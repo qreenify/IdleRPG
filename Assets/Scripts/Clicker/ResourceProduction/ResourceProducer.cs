@@ -1,6 +1,6 @@
 ﻿using Common;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Accessibility;
 using UnityEngine.UI;
 
 namespace Clicker.ResourceProduction {
@@ -23,6 +23,10 @@ namespace Clicker.ResourceProduction {
 		public void Purchase() => this.amount.Purchase();
 		public void Upgrade() => this.upgrade.Purchase();
 
+		public void AnotherMethod() {
+			
+		}
+		
 		void Update() {
 			UpdateProduction();
 			UpdateTitleLabel();
