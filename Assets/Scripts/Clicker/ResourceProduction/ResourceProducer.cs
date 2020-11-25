@@ -20,10 +20,11 @@ namespace Clicker.ResourceProduction {
 			this.upgrade.SetUp(data, "Level");
 		}
 
-		public void Purchase() => this.amount.Purchase();
+		public void Purchase2() => this.amount.Purchase();
 		public void Upgrade() => this.upgrade.Purchase();
 
 		public void AnotherMethod() {
+		public void NewMethod1() {
 			
 		}
 		
@@ -32,6 +33,10 @@ namespace Clicker.ResourceProduction {
 			UpdateTitleLabel();
 			this.amount.Update();
 			this.upgrade.Update();
+		}
+		
+		public void NewMethod2() {
+			
 		}
 
 		void UpdateProduction() {
