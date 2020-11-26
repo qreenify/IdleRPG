@@ -1,9 +1,9 @@
 namespace Currencies {
 	public class Money {
-		protected int amount;
-		protected string currency;
+		readonly int amount;
+		readonly string currency;
 
-		public Money(int amount, string currency) {
+		Money(int amount, string currency) {
 			this.amount = amount;
 			this.currency = currency;
 		}
