@@ -1,6 +1,6 @@
 namespace Currencies {
-	public class Money {
-		readonly int amount;
+	public class Money : IMoney {
+		int amount;
 		readonly string currency;
 
 		Money(int amount, string currency) {
@@ -32,6 +32,12 @@ namespace Currencies {
 		
 		public Money Times(int factor) {
 			return new Money(this.amount * factor, this.currency);
+		}
+
+		public IMoney Add(Money addend) {
+			if(addend.currency == this.currency)
+				return new Money(this.amount + addend.amount, this.currency);
+			return new Wallet(addend, this);
 		}
 	}
 }

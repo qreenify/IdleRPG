@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using UnityEngine;
 
 namespace Currencies.Tests {
 	// case 1: only one class in a namespace => make the namespace to a class
@@ -33,15 +34,22 @@ namespace Currencies.Tests {
 	}
 
 	public class Add {
-		/*
-		// Exercise 1:
+		// requirement testing
+		// acceptance testing
+		
 		[Test]
 		public void ResultForSameCurrencies() {
 			var five = Money.Dollar(5);
 			Assert.AreEqual(Money.Dollar(10), five.Add(five));
 		}
-
-		// Exercise 2:
+		
+		[Test]
+		public void DoesNotAffectOriginalInstance() {
+			var five = Money.Dollar(5);
+			five.Add(five);
+			Assert.AreEqual(Money.Dollar(5), five);
+		}
+		
 		[Test]
 		public void ResultForDifferentCurrencies() {
 			var exchangeRate = 10f;
@@ -52,7 +60,7 @@ namespace Currencies.Tests {
 			var dollars = bank.ExchangeToDollar(sum); // Bank takes Wallet || MoneyExpression
 			Assert.AreEqual(Money.Dollar(15), dollars);
 		}
-		
+		/*
 		// Exercise 3:
 		[Test]
 		public void ResultForMultipleCurrencies() {
@@ -70,7 +78,9 @@ namespace Currencies.Tests {
 		// maybe you want to change new Bank(exchangeRates) to:
 		// new Bank(); bank.AddExchangeRate(from: "Dollar", to: "Euro", rate: 2.0);
 	}
+
 	
+
 	// case 1: multiple classes in one namespace
 	namespace Equal {
 		public class SameType {
