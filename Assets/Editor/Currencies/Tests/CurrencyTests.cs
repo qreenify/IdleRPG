@@ -44,6 +44,7 @@ namespace Currencies.Tests {
         [Test]
         public void ToStringFormat() {
             Assert.AreEqual("5 Dollar", Money.Dollar(5).ToString());
+            Assert.AreEqual("5 SEK", Money.Dollar(5).ToString());
         }
 
         [Test]
