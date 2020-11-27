@@ -12,6 +12,11 @@ namespace Currencies {
 			return $"{this.amount} {this.currency}";
 		}
 
+		public Money ConvertToDollar(Bank bank) {
+			// TODO 1: check our currency for dollar and use bank exchange rate, if it is not Dollar, yet.
+			throw new System.NotImplementedException();
+		}
+
 		public override bool Equals(object obj) {
 			if (GetType() != obj?.GetType()) {
 				return false;

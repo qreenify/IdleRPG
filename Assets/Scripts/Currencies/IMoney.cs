@@ -3,7 +3,7 @@ namespace Currencies {
 		// easy version (only Dollar):
 		Money ConvertToDollar(Bank bank);
 		
-		// extended version:
+		// TODO 3 extended version:
 		// Money ConvertTo(Bank bank, string currency);
 	}
 }

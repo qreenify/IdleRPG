@@ -7,12 +7,12 @@ namespace Currencies {
 			return money.ConvertToDollar(this);
 		}
 
-		// easy version:
+		// TODO 1 easy version:
 		public float GetDollarExchangeRate(string from) {
 			throw new System.NotImplementedException();
 		}
 		
-		// extended version:
+		// TODO 3 extended version:
 		public float GetExchangeRate(string from, string to) {
 			throw new System.NotImplementedException();
 		}
