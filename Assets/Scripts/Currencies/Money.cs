@@ -13,7 +13,7 @@ namespace Currencies {
 		}
 
 		public Money ConvertToDollar(Bank bank) {
-			// TODO 1: check our currency for dollar and use bank exchange rate, if it is not Dollar, yet.
+			// TODO 2: check our currency for dollar and use bank exchange rate, if it is not Dollar, yet.
 			throw new System.NotImplementedException();
 		}
 

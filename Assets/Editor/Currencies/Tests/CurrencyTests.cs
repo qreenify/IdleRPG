@@ -73,7 +73,18 @@ namespace Currencies.Tests {
 			sum = sum.Add(twentyEuros);
 			var dollars = bank.ExchangeToDollar(sum); // Bank takes Wallet || MoneyExpression
 			Assert.AreEqual(Money.Dollar(25), dollars);
-		}*/
+		}
+		
+		// TODO 4:
+		(($5 + 100SEK) + 10 EUR) => USD
+		(($5 + 100SEK) + 10 EUR) => EUR
+		(($5 + 100SEK) + 10 EUR) => SEK
+		(($5 + 100SEK) * 2) => EUR
+		
+		*/
+		
+		
+		
 		
 		// maybe you want to change new Bank(exchangeRates) to:
 		// new Bank(); bank.AddExchangeRate(from: "Dollar", to: "Euro", rate: 2.0);
