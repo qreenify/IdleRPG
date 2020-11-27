@@ -1,6 +1,6 @@
 namespace Currencies {
 	public class Money : IMoney {
-		int amount;
+		readonly int amount;
 		readonly string currency;
 
 		Money(int amount, string currency) {
