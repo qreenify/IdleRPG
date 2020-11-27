@@ -1,54 +1,68 @@
-using UnityEngine;
-
-namespace Currencies {
-	public class Money : IMoney {
+namespace Currencies
+{
+	public class Money : IMoney
+	{
 		readonly int amount;
 		readonly string currency;
 
-		Money(int amount, string currency) {
+		Money(int amount, string currency)
+		{
 			this.amount = amount;
 			this.currency = currency;
 		}
-		
-		public override string ToString() {
+
+		public override string ToString()
+		{
 			return $"{this.amount} {this.currency}";
 		}
 
-		public Money ConvertToDollar(Bank bank) {
-			Debug.Log("ConvertToDollar");
-			if ("Dollar" == this.currency) {
+		public Money ConvertToDollar(Bank bank)
+		{
+			
+			if ("Dollar" == this.currency)
+			{
 				return this;
 			}
-			return new Money((int)(this.amount * bank.GetDollarExchangeRate(this.currency)), "Dollar");
+
+			return new Money((int) (this.amount * bank.GetDollarExchangeRate(this.currency)), "Dollar");
 		}
 
-		public override bool Equals(object obj) {
-			if (GetType() != obj?.GetType()) {
+		public override bool Equals(object obj)
+		{
+			if (GetType() != obj?.GetType())
+			{
 				return false;
 			}
+
 			var money = (Money) obj;
 			if (this.currency != money.currency)
 				return false;
 			return money.amount == this.amount;
 		}
 
-		public static Money Dollar(int amount) {
+		public static Money Dollar(int amount)
+		{
 			return new Money(amount, "Dollar");
 		}
 
-		public static Money SEK(int amount) {
+		public static Money SEK(int amount)
+		{
 			return new Money(amount, "SEK");
 		}
-		public static Money Euro(int amount) {
+
+		public static Money Euro(int amount)
+		{
 			return new Money(amount, "Euro");
 		}
-		
-		public Money Times(int factor) {
+
+		public Money Times(int factor)
+		{
 			return new Money(this.amount * factor, this.currency);
 		}
 
-		public IMoney Add(Money addend) {
-			if(addend.currency == this.currency)
+		public IMoney Add(Money addend)
+		{
+			if (addend.currency == this.currency)
 				return new Money(this.amount + addend.amount, this.currency);
 			return new Wallet(addend, this);
 		}
