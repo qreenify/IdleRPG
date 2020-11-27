@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Currencies {
 	public class Money : IMoney {
 		readonly int amount;
@@ -13,8 +15,11 @@ namespace Currencies {
 		}
 
 		public Money ConvertToDollar(Bank bank) {
-			// TODO 2: check our currency for dollar and use bank exchange rate, if it is not Dollar, yet.
-			throw new System.NotImplementedException();
+			Debug.Log("ConvertToDollar");
+			if ("Dollar" == this.currency) {
+				return this;
+			}
+			return new Money((int)(this.amount * bank.GetDollarExchangeRate(this.currency)), "Dollar");
 		}
 
 		public override bool Equals(object obj) {
@@ -33,6 +38,9 @@ namespace Currencies {
 
 		public static Money SEK(int amount) {
 			return new Money(amount, "SEK");
+		}
+		public static Money Euro(int amount) {
+			return new Money(amount, "Euro");
 		}
 		
 		public Money Times(int factor) {

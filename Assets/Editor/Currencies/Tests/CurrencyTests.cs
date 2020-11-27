@@ -60,21 +60,22 @@ namespace Currencies.Tests {
 			var dollars = bank.ExchangeToDollar(sum); // Bank takes Wallet || MoneyExpression
 			Assert.AreEqual(Money.Dollar(15), dollars);
 		}
-		/*
+		
 		// Exercise 3:
 		[Test]
 		public void ResultForMultipleCurrencies() {
-			var exchangeRates = ??; // euro -> usd 2:1 sek -> usd 10:1
+			var exchangeRates = 0; // euro -> usd 2:1 sek -> usd 10:1
 			var bank = new Bank(exchangeRates);
 			var fiveDollars = Money.Dollar(5);
 			var hundredSek = Money.SEK(100);
 			var twentyEuros = Money.Euro(10);
 			var sum = fiveDollars.Add(hundredSek); // Wallet || MoneyExpression (it is 5$ & 100 SEK)
+			sum = bank.ExchangeToDollar(sum);
 			sum = sum.Add(twentyEuros);
 			var dollars = bank.ExchangeToDollar(sum); // Bank takes Wallet || MoneyExpression
 			Assert.AreEqual(Money.Dollar(25), dollars);
 		}
-		
+		/*
 		// TODO 4:
 		(($5 + 100SEK) + 10 EUR) => USD
 		(($5 + 100SEK) + 10 EUR) => EUR
